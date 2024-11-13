@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Character
+{% endblock %}
+
+{% block main %}
+    <h1>Add Character</h1>
+    <br>
+    <form action="/addcharacter" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="name" placeholder="Name" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="item_level" placeholder="Item Level" type="text">
+        </div>
+        <div class="mb-3">
+            <select name="character_class">
+                <option disabled selected value="">Class</option>
+                {% for class in classes %}
+                    <option value="{{ class }}">{{ class }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+{% endblock %}

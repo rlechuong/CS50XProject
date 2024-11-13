@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Qualities
+{% endblock %}
+
+{% block main %}
+
+    <h3>Add/Edit Quality</h3>
+    <br>
+    <form action="/qualities" method="post">
+        <div class="mb-3">
+            <select name="character">
+                <option disabled selected value="">Character</option>
+                {% for character in characters_list %}
+                    <option value="{{ character }}">{{ character }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <select name="slot">
+                <option disabled selected value="">Slot</option>
+                {% for slot in slots %}
+                    <option value="{{ slot }}">{{ slot }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="quality" placeholder="Quality" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Add/Update</button>
+    </form>
+
+    <br><br>
+
+    <h1>Qualities</h1>
+    <br>
+    <table class="center" style="width:75%">
+        <thead>
+            <tr>
+                <th>Slot</th>
+                {% for character in characters_list %}
+                <th>{{ character }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Helm</td>
+                {% for helm_quality in helm_qualities_list %}
+                <td {% if helm_quality == lowest_armor_quality %} class="lowest_armor" {% endif %}>{{ helm_quality }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Pauldrons</td>
+                {% for pauldrons_quality in pauldrons_qualities_list %}
+                <td {% if pauldrons_quality == lowest_armor_quality %} class="lowest_armor" {% endif %}>{{ pauldrons_quality }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Chestpiece</td>
+                {% for chestpiece_quality in chestpiece_qualities_list %}
+                <td {% if chestpiece_quality == lowest_armor_quality %} class="lowest_armor" {% endif %}>{{ chestpiece_quality }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Pants</td>
+                {% for pants_quality in pants_qualities_list %}
+                <td {% if pants_quality == lowest_armor_quality %} class="lowest_armor" {% endif %}>{{ pants_quality }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Gloves</td>
+                {% for gloves_quality in gloves_qualities_list %}
+                <td {% if glove_quality == lowest_armor_quality %} class="lowest_armor" {% endif %}>{{ gloves_quality }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Weapon</td>
+                {% for weapon_quality in weapon_qualities_list %}
+                <td {% if weapon_quality == lowest_weapon_quality %} class="lowest_weapon" {% endif %}>{{ weapon_quality }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h3>Key</h3>
+    <table class="center" style="width:25%">
+        <tr>
+            <td class="lowest_armor">Lowest Armor</td>
+        </tr>
+        <tr>
+            <td class="lowest_weapon">Lowest Weapon</td>
+        </tr>
+    </table>
+{% endblock %}

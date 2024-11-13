@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit/Delete Character
+{% endblock %}
+
+{% block main %}
+
+    <h3>Delete Character</h3>
+    <br>
+    <form action="/delete" method="post" onsubmit="return confirm('Are You Sure You Want To Delete?');">
+        <div class="mb-3">
+            <select name="character">
+                <option disabled selected value="">Character</option>
+                {% for character in characters_list %}
+                    <option value="{{ character }}">{{ character }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Delete</button>
+    </form>
+
+    <br><br><br>
+
+    <h3>Edit Character</h3>
+    <br>
+    <form action="/edit" method="post" onsubmit="return confirm('Are You Sure You Want To Edit?');">
+        <div class="mb-3">
+            <select name="name_edit" onchange="changeText()">
+                <option disabled selected value="">Character</option>
+                {% for character in characters_list %}
+                    <option value="{{ character }}">{{ character }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="item_level_edit" placeholder="Item Level" type="text">
+        </div>
+        <div class="mb-3">
+            <select name="class_edit">
+                <option disabled selected value="">Class</option>
+                {% for class in classes %}
+                    <option value="{{ class }}">{{ class }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Apply</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Oreha Calculator
+{% endblock %}
+
+{% block main %}
+    <h1>Oreha Calculator</h1>
+
+    <br>
+
+    <h3>{{ summary }}</h3>
+    <p>The price of crafting Oreha with <b>FISH</b> is: <b>{{ "%.2f"|format(oreha_fish_indprice) }}</b></p>
+    <p>The price of crafting Oreha with <b>MEAT</b> is: <b>{{ "%.2f"|format(oreha_meat_indprice) }}</b></p>
+    <p>The price of crafting Oreha with <b>RELIC</b> is: <b>{{ "%.2f"|format(oreha_relic_indprice) }}</b></p>
+
+    <form action="/oreha" method="post">
+        <div>
+            <label for="oreha_auction_price"><b>Oreha Auction House Price:</b></label>
+            <input autocomplete="off" name="oreha_fusion_material_price" value="{{ oreha_fusion_material_price }}" type="text">
+        </div>
+        <br>
+        <h2>Fish</h2>
+        <table class="center" style="width:50%" id="oreha_table">
+            <thead>
+                <tr>
+                    <th width="40%">Material</th>
+                    <th>Stack Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Oreha Solar Carp</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{oreha_solar_carp_price}}" name="oreha_solar_carp_price" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Natural Pearl</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{ natural_pearl_price }}" name="natural_pearl_price" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fish</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{ fish_price }}" name="fish_price" type="text">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <h2>Meat</h2>
+        <table class="center" style="width:50%" id="oreha_table">
+            <thead>
+                <tr>
+                    <th width="40%">Material</th>
+                    <th>Stack Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Oreha Thick Meat</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{oreha_thick_meat_price}}" name="oreha_thick_meat_price" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tough Leather</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{tough_leather_price}}" name="tough_leather_price" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Thick Raw Meat</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{thick_raw_meat_price}}" name="thick_raw_meat_price" type="text">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <h2>Relic</h2>
+        <table class="center" style="width:50%" id="oreha_table">
+            <thead>
+                <tr>
+                    <th width="40%">Material</th>
+                    <th>Stack Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Oreha Relic</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{oreha_relic_price}}" name="oreha_relic_price" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rare Relic</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{rare_relic_price}}" name="rare_relic_price" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ancient Relic</td>
+                    <td>
+                        <input autocomplete="off" class="form-control mx-auto w-auto" value="{{ancient_relic_price}}" name="ancient_relic_price" type="text">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button class="btn btn-primary" type="submit">Update/Calculate</button>
+    </form>
+{% endblock %}
